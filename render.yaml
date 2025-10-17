@@ -1,0 +1,13 @@
+services:
+  # A Web Service for your Spring Boot application
+  - type: web
+    name: visual-product-matcher-app
+    # ✅ This is the crucial fix: It forces Render to use the Java environment
+    runtime: java
+    buildCommand: "mvn clean install -U"
+    startCommand: "java -jar target/visual-product-matcher-1.0-SNAPSHOT.jar"
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: visual-matcher-db # IMPORTANT: Must match your Render DB name
+          property: connectionString
