@@ -2,8 +2,8 @@ services:
   # A Web Service for your Spring Boot application
   - type: web
     name: visual-product-matcher-app
-    runtime: java
-    # ✅ THIS IS THE FIX: Tells Render to look inside this folder
+    # THE FIX: The incorrect 'runtime: java' line has been removed.
+    # Render will now auto-detect it as a Java project.
     rootDir: visual-product-matcher
     buildCommand: "mvn clean install -U"
     startCommand: "java -jar target/visual-product-matcher-1.0-SNAPSHOT.jar"
